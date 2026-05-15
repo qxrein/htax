@@ -1,0 +1,26 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Simulation
+tb/sim_build/
+tb/results.xml
+tb/dump.vcd
+*.vcd
+
+# Formal
+formal/htax/
+
+# ASIC implementation (large generated artifacts)
+impl/runs/
+impl/*.gds
+impl/*.mag
+impl/*.lef
+
+# OS / editor
+.DS_Store
+*.swp
+*~

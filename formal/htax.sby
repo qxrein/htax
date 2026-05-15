@@ -1,0 +1,13 @@
+[options]
+mode prove
+depth 20
+
+[engines]
+smtbmc z3
+
+[script]
+read -formal htax.sv
+prep -top htax
+
+[files]
+../rtl/htax.sv

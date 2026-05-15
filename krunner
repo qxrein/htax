@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+# HTAX verification regression runner (sim + formal; optional impl)
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+LIBRELANE_HOME="${LIBRELANE_HOME:-$HOME/projects/librelane}"
+SEEDS="${SEEDS:-1 42 99}"
+RUN_IMPL=0
+RUN_FORMAL=1
+
+usage() {
+    cat <<'EOF'
+Usage: krunner [OPTIONS]
+
+  Fast regression for HTAX verification (default: cocotb + formal).
+
+Options:
+  --sim-only     Run cocotb simulation only
+  --no-formal    Skip SymbiYosys formal
+  --impl         Include LibreLane (slow)
+  --seeds LIST   Space-separated random seeds (default: "1 42 99")
+  -h, --help     Show this help
+
+Examples:
+  ./krunner
+  ./krunner --sim-only
+  ./krunner --seeds "1 2 3 4 5"
+EOF
+}
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --sim-only) RUN_FORMAL=0 ;;
+        --no-formal) RUN_FORMAL=0 ;;
+        --impl) RUN_IMPL=1 ;;
+        --seeds)
+            shift
+            SEEDS="${1:?--seeds requires a value}"
+            ;;
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1" >&2
+            usage >&2
+            exit 2
+            ;;
+    esac
+    shift
+done
+
+failures=0
+passes=0
+
+run_step() {
+    local name="$1"
+    shift
+    echo ""
+    echo "=== $name ==="
+    if "$@"; then
+        echo ">>> PASS: $name"
+        passes=$((passes + 1))
+    else
+        echo ">>> FAIL: $name" >&2
+        failures=$((failures + 1))
+    fi
+}
+
+# --- Cocotb regression (multiple seeds) ---
+sim_ok=1
+for seed in $SEEDS; do
+    echo "--- cocotb seed=$seed ---"
+    if ! (
+        cd "$ROOT/tb"
+        make clean >/dev/null 2>&1 || true
+        COCOTB_RANDOM_SEED="$seed" make
+    ); then
+        sim_ok=0
+    fi
+done
+if [[ "$sim_ok" -eq 1 ]]; then
+    echo ">>> PASS: cocotb (seeds:$SEEDS)"
+    passes=$((passes + 1))
+else
+    echo ">>> FAIL: cocotb (seeds:$SEEDS)" >&2
+    failures=$((failures + 1))
+fi
+
+# --- Formal ---
+if [[ "$RUN_FORMAL" -eq 1 ]]; then
+    if ! command -v z3 >/dev/null 2>&1; then
+        echo ">>> FAIL: formal (z3 not found — brew install z3)" >&2
+        failures=$((failures + 1))
+    else
+        run_step "formal (SymbiYosys)" bash -c "cd '$ROOT/formal' && rm -rf htax && sby -f htax.sby"
+    fi
+fi
+
+# --- LibreLane (optional) ---
+if [[ "$RUN_IMPL" -eq 1 ]]; then
+    if [[ -d "$LIBRELANE_HOME" ]]; then
+        run_step "impl (LibreLane)" bash -c \
+            "cd '$ROOT/impl' && PYTHONPATH='$LIBRELANE_HOME' python -m librelane config.json"
+    else
+        echo ">>> FAIL: impl (LibreLane not found at $LIBRELANE_HOME)" >&2
+        failures=$((failures + 1))
+    fi
+fi
+
+echo ""
+echo "=============================="
+echo " krunner summary"
+echo "=============================="
+echo "  PASS: $passes"
+echo "  FAIL: $failures"
+echo "=============================="
+
+if [[ "$failures" -gt 0 ]]; then
+    exit 1
+fi

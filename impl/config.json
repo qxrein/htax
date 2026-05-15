@@ -1,0 +1,9 @@
+{
+    "PDK": "sky130A",
+    "DESIGN_NAME": "htax",
+    "VERILOG_FILES": ["../rtl/htax.sv"],
+    "CLOCK_PORT": "clk",
+    "CLOCK_PERIOD": 10.0,
+    "FP_CORE_UTIL": 40,
+    "PL_TARGET_DENSITY": 0.45
+}
