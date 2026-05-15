@@ -1,0 +1,6 @@
+<testsuites name="results">
+  <testsuite name="all" package="all">
+    <property name="random_seed" value="99" />
+    <testcase name="test_basic_packet_transfer" classname="test_htax" file="/Users/rein/projects/htax-verify/tb/test_htax.py" lineno="6" time="0.0002818107604980469" sim_time_ns="70.0" ratio_time="248393.63790186125" />
+  </testsuite>
+</testsuites>

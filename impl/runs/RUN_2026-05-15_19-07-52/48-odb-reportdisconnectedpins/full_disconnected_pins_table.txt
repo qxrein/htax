@@ -1,0 +1,73 @@
+┏━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓
+┃ Macro/Instance ┃ Power Pins ┃ Disconnected ┃ Signal Pins ┃ Disconnected ┃
+┡━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━┩
+│ htax           │ VPWR       │              │ clk         │ tx_vc[0]     │
+│                │ VGND       │              │ rst_n       │ tx_vc[1]     │
+│                │            │              │ rx_data[0]  │ tx_vc[2]     │
+│                │            │              │ rx_data[10] │              │
+│                │            │              │ rx_data[11] │              │
+│                │            │              │ rx_data[12] │              │
+│                │            │              │ rx_data[13] │              │
+│                │            │              │ rx_data[14] │              │
+│                │            │              │ rx_data[15] │              │
+│                │            │              │ rx_data[16] │              │
+│                │            │              │ rx_data[17] │              │
+│                │            │              │ rx_data[18] │              │
+│                │            │              │ rx_data[19] │              │
+│                │            │              │ rx_data[1]  │              │
+│                │            │              │ rx_data[20] │              │
+│                │            │              │ rx_data[21] │              │
+│                │            │              │ rx_data[22] │              │
+│                │            │              │ rx_data[23] │              │
+│                │            │              │ rx_data[24] │              │
+│                │            │              │ rx_data[25] │              │
+│                │            │              │ rx_data[26] │              │
+│                │            │              │ rx_data[27] │              │
+│                │            │              │ rx_data[28] │              │
+│                │            │              │ rx_data[29] │              │
+│                │            │              │ rx_data[2]  │              │
+│                │            │              │ rx_data[30] │              │
+│                │            │              │ rx_data[31] │              │
+│                │            │              │ rx_data[3]  │              │
+│                │            │              │ rx_data[4]  │              │
+│                │            │              │ rx_data[5]  │              │
+│                │            │              │ rx_data[6]  │              │
+│                │            │              │ rx_data[7]  │              │
+│                │            │              │ rx_data[8]  │              │
+│                │            │              │ rx_data[9]  │              │
+│                │            │              │ rx_valid    │              │
+│                │            │              │ tx_data[0]  │              │
+│                │            │              │ tx_data[10] │              │
+│                │            │              │ tx_data[11] │              │
+│                │            │              │ tx_data[12] │              │
+│                │            │              │ tx_data[13] │              │
+│                │            │              │ tx_data[14] │              │
+│                │            │              │ tx_data[15] │              │
+│                │            │              │ tx_data[16] │              │
+│                │            │              │ tx_data[17] │              │
+│                │            │              │ tx_data[18] │              │
+│                │            │              │ tx_data[19] │              │
+│                │            │              │ tx_data[1]  │              │
+│                │            │              │ tx_data[20] │              │
+│                │            │              │ tx_data[21] │              │
+│                │            │              │ tx_data[22] │              │
+│                │            │              │ tx_data[23] │              │
+│                │            │              │ tx_data[24] │              │
+│                │            │              │ tx_data[25] │              │
+│                │            │              │ tx_data[26] │              │
+│                │            │              │ tx_data[27] │              │
+│                │            │              │ tx_data[28] │              │
+│                │            │              │ tx_data[29] │              │
+│                │            │              │ tx_data[2]  │              │
+│                │            │              │ tx_data[30] │              │
+│                │            │              │ tx_data[31] │              │
+│                │            │              │ tx_data[3]  │              │
+│                │            │              │ tx_data[4]  │              │
+│                │            │              │ tx_data[5]  │              │
+│                │            │              │ tx_data[6]  │              │
+│                │            │              │ tx_data[7]  │              │
+│                │            │              │ tx_data[8]  │              │
+│                │            │              │ tx_data[9]  │              │
+│                │            │              │ tx_ready    │              │
+│                │            │              │ tx_valid    │              │
+└────────────────┴────────────┴──────────────┴─────────────┴──────────────┘

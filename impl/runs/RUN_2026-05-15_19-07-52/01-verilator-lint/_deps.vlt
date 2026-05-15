@@ -1,0 +1,5 @@
+`verilator_config
+lint_off -rule DECLFILENAME
+lint_off -rule EOFNEWLINE
+lint_off -rule UNDRIVEN -file "/Users/rein/projects/htax-verify/impl/runs/RUN_2026-05-15_19-07-52/tmp/5c7155ebb95346ed9bd223a5c842d285.bb.v"
+lint_off -rule UNUSEDSIGNAL -file "/Users/rein/projects/htax-verify/impl/runs/RUN_2026-05-15_19-07-52/tmp/5c7155ebb95346ed9bd223a5c842d285.bb.v"

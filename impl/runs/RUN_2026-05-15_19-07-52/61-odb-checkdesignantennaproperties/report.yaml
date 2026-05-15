@@ -1,0 +1,7 @@
+- cell: htax
+  inout: []
+  input:
+  - tx_vc[0]
+  - tx_vc[1]
+  - tx_vc[2]
+  output: []

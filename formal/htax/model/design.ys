@@ -1,0 +1,8 @@
+# running in htax/src/
+read -formal htax.sv
+prep -top htax
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

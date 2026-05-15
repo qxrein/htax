@@ -1,0 +1,274 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.62 (git sha1 7326bb7d6641500ecb285c291a54a662cb1e76cf, clang++ 21.1.2 -fPIC -O3)
+
+-- Executing script file `../model/design.ys' --
+
+1. Executing Verilog-2005 frontend: htax.sv
+Parsing formal SystemVerilog input from `htax.sv' to AST representation.
+Storing AST representation for module `$abstract\htax'.
+Successfully finished Verilog frontend.
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.2. Executing AST frontend in derive mode using pre-parsed AST for module `\htax'.
+Generating RTLIL representation for module `\htax'.
+
+2.2.1. Analyzing design hierarchy..
+Top module:  \htax
+
+2.2.2. Analyzing design hierarchy..
+Top module:  \htax
+Removing unused module `$abstract\htax'.
+Removed 1 unused modules.
+Module htax directly or indirectly contains formal properties -> setting "keep" attribute.
+
+2.3. Executing PROC pass (convert processes to netlists).
+
+2.3.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.3.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$htax.sv:83$16 in module htax.
+Marked 1 switch rules as full_case in process $proc$htax.sv:73$14 in module htax.
+Removed 1 dead cases from process $proc$htax.sv:30$8 in module htax.
+Marked 2 switch rules as full_case in process $proc$htax.sv:30$8 in module htax.
+Removed a total of 1 dead cases.
+
+2.3.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 3 redundant assignments.
+Promoted 3 assignments to connections.
+
+2.3.4. Executing PROC_INIT pass (extract init attributes).
+
+2.3.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst_n in `\htax.$proc$htax.sv:30$8'.
+
+2.3.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~7 debug messages>
+
+2.3.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\htax.$proc$htax.sv:69$29'.
+Creating decoders for process `\htax.$proc$htax.sv:83$16'.
+     1/3: $assume$htax.sv:91$25_EN
+     2/3: $assert$htax.sv:87$23_EN
+     3/3: $assume$htax.sv:85$20_EN
+Creating decoders for process `\htax.$proc$htax.sv:73$14'.
+     1/2: $0\f_reset_seen[0:0]
+     2/2: $0\f_past_valid[0:0]
+Creating decoders for process `\htax.$proc$htax.sv:30$8'.
+     1/4: $0\credit_count[3:0]
+     2/4: $0\rx_valid_q[0:0]
+     3/4: $0\rx_data_q[31:0]
+     4/4: $0\state[0:0]
+
+2.3.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+2.3.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\htax.$past$htax.sv:90$1$0' using process `\htax.$proc$htax.sv:83$16'.
+  created $dff cell `$procdff$75' with positive edge clock.
+Creating register for signal `\htax.$past$htax.sv:91$2$0' using process `\htax.$proc$htax.sv:83$16'.
+  created $dff cell `$procdff$76' with positive edge clock.
+Creating register for signal `\htax.\f_past_valid' using process `\htax.$proc$htax.sv:73$14'.
+  created $dff cell `$procdff$77' with positive edge clock.
+Creating register for signal `\htax.\f_reset_seen' using process `\htax.$proc$htax.sv:73$14'.
+  created $dff cell `$procdff$78' with positive edge clock.
+Creating register for signal `\htax.\state' using process `\htax.$proc$htax.sv:30$8'.
+  created $adff cell `$procdff$83' with positive edge clock and positive level reset.
+Creating register for signal `\htax.\rx_data_q' using process `\htax.$proc$htax.sv:30$8'.
+  created $adff cell `$procdff$88' with positive edge clock and positive level reset.
+Creating register for signal `\htax.\rx_valid_q' using process `\htax.$proc$htax.sv:30$8'.
+  created $adff cell `$procdff$93' with positive edge clock and positive level reset.
+Creating register for signal `\htax.\credit_count' using process `\htax.$proc$htax.sv:30$8'.
+  created $adff cell `$procdff$98' with positive edge clock and positive level reset.
+
+2.3.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.3.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `htax.$proc$htax.sv:69$29'.
+Found and cleaned up 3 empty switches in `\htax.$proc$htax.sv:83$16'.
+Removing empty process `htax.$proc$htax.sv:83$16'.
+Found and cleaned up 1 empty switch in `\htax.$proc$htax.sv:73$14'.
+Removing empty process `htax.$proc$htax.sv:73$14'.
+Found and cleaned up 3 empty switches in `\htax.$proc$htax.sv:30$8'.
+Removing empty process `htax.$proc$htax.sv:30$8'.
+Cleaned up 7 empty switches.
+
+2.3.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module htax.
+<suppressed ~23 debug messages>
+
+2.4. Executing FUTURE pass.
+
+2.5. Executing OPT_EXPR pass (perform const folding).
+Optimizing module htax.
+
+2.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \htax..
+Removed 9 unused cells and 44 unused wires.
+<suppressed ~11 debug messages>
+
+2.7. Executing CHECK pass (checking for obvious problems).
+Checking module htax...
+Found and reported 0 problems.
+
+2.8. Executing OPT pass (performing simple optimizations).
+
+2.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module htax.
+
+2.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\htax'.
+Computing hashes of 47 cells of `\htax'.
+Finding duplicate cells in `\htax'.
+Computing hashes of 44 cells of `\htax'.
+Finding duplicate cells in `\htax'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+2.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \htax..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+      Replacing known input bits on port A of cell $procmux$70: \state -> 1'0
+      Replacing known input bits on port A of cell $procmux$72: \state -> 1'0
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+2.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \htax.
+    New ctrl vector for $pmux cell $procmux$70: $eq$htax.sv:26$4_Y
+  Optimizing cells in module \htax.
+Performed a total of 1 changes.
+
+2.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\htax'.
+Computing hashes of 44 cells of `\htax'.
+Finding duplicate cells in `\htax'.
+Computing hashes of 43 cells of `\htax'.
+Finding duplicate cells in `\htax'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+2.8.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \htax..
+Removed 0 unused cells and 4 unused wires.
+<suppressed ~1 debug messages>
+
+2.8.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module htax.
+<suppressed ~1 debug messages>
+
+2.8.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.8.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \htax..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~24 debug messages>
+
+2.8.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \htax.
+Performed a total of 0 changes.
+
+2.8.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\htax'.
+Computing hashes of 43 cells of `\htax'.
+Finding duplicate cells in `\htax'.
+Removed a total of 0 cells.
+
+2.8.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \htax..
+
+2.8.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module htax.
+
+2.8.14. Finished fast OPT passes. (There is nothing left to do.)
+
+2.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 3 bits (of 4) from port B of cell htax.$sub$htax.sv:42$10 ($sub).
+Removed top 3 bits (of 4) from port B of cell htax.$add$htax.sv:50$12 ($add).
+Removed top 28 bits (of 32) from port B of cell htax.$le$htax.sv:87$24 ($le).
+
+2.10. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \htax..
+
+2.11. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.12. Executing OPT pass (performing simple optimizations).
+
+2.12.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module htax.
+
+2.12.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\htax'.
+Computing hashes of 43 cells of `\htax'.
+Finding duplicate cells in `\htax'.
+Removed a total of 0 cells.
+
+2.12.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \htax..
+
+2.12.4. Finished fast OPT passes.
+
+2.13. Printing statistics.
+
+=== htax ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       46 wires
+      252 wire bits
+       15 public wires
+      113 public wire bits
+        8 ports
+       72 port bits
+       43 cells
+        1   $add
+        4   $adff
+        4   $check
+        4   $dff
+        1   $eq
+        1   $le
+        5   $logic_and
+        3   $logic_not
+        1   $lt
+       14   $mux
+        1   $not
+        2   $pmux
+        1   $reduce_bool
+        1   $sub
+
+2.14. Executing CHECK pass (checking for obvious problems).
+Checking module htax...
+Found and reported 0 problems.
+
+3. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `htax'. Setting top module to htax.
+
+3.1. Analyzing design hierarchy..
+Top module:  \htax
+
+3.2. Analyzing design hierarchy..
+Top module:  \htax
+Removed 0 unused modules.
+Module htax directly or indirectly contains formal properties -> setting "keep" attribute.
+
+4. Executing jny backend.
+
+5. Executing RTLIL backend.
+Output filename: ../model/design.il
+
+End of script. Logfile hash: d9e48ea612, CPU: user 0.02s system 0.01s, MEM: 26.98 MB peak
+Yosys 0.62 (git sha1 7326bb7d6641500ecb285c291a54a662cb1e76cf, clang++ 21.1.2 -fPIC -O3)
+Time spent: 25% 6x opt_expr (0 sec), 23% 5x opt_clean (0 sec), ...
